@@ -1,0 +1,33 @@
+services:
+  # Selenium service
+  - name: selenium-chrome
+    type: web
+    env: docker
+    docker:
+      image: selenium/standalone-chrome:latest
+    plan: starter
+    ports:
+      - port: 4444  # Selenium Hub port
+        protocol: TCP
+    envVars:
+      - key: SE_NODE_MAX_SESSIONS
+        value: "5"
+      - key: SE_NODE_OVERRIDE_MAX_SESSIONS
+        value: "true"
+    healthCheckPath: "/wd/hub/status"
+    healthCheckIntervalSeconds: 30
+
+  # Python application service
+  - name: python-selenium
+    type: web
+    env: docker
+    docker:
+      build:
+        dockerfilePath: python.Dockerfile
+    plan: starter
+    dependsOn:
+      - name: selenium-chrome
+        condition: service_healthy
+    envVars:
+      - key: SELENIUM_HOST
+        value: selenium-chrome  # Reference the Selenium service hostname

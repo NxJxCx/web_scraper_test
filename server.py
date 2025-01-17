@@ -25,7 +25,9 @@ def home():
 @app.route("/test")
 async def test():
     try:
-        search_text: str = str(request.args.get("q"))
+        search_text: str = str(request.args.get("q", ""))
+        if not search_text:
+            return jsonify(error="bad request")
         output_queue: asyncio.Queue = asyncio.Queue()
         app_stopped: asyncio.Event = asyncio.Event()
         await asyncio.gather(
@@ -40,6 +42,7 @@ async def test():
     except Exception as e:
         traceback.print_exc()
         print("Error:", e)
+        return jsonify(error=str(e))
 
 
 if __name__ == "__main__":

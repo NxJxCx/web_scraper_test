@@ -107,8 +107,8 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
         driver = webdriver.Chrome(options=options)
     else:
         from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-        selenium_grid_url = "http://localhost:4444/wd/hub"
+        import os
+        selenium_grid_url = f"http://{os.environ.get("SELENIUM_HOST") if "SELENIUM_HOST" in os.environ.keys() else "localhost"}:4444/wd/hub"
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,
@@ -158,8 +158,8 @@ async def google_scrape(
         driver = webdriver.Chrome(options=options)
     else:
         from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-        selenium_grid_url = "http://localhost:4444/wd/hub"
+        import os
+        selenium_grid_url = f"http://{os.environ.get("SELENIUM_HOST") if "SELENIUM_HOST" in os.environ.keys() else "localhost"}:4444/wd/hub"
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,

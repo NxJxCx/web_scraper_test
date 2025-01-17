@@ -10,4 +10,4 @@ COPY ./server.py /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "server:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "server:app"]

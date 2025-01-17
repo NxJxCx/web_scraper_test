@@ -973,7 +973,7 @@
         "kind": 2,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "def home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\"))\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()\n        await asyncio.gather(\n            await google_scrape(search_text, output_queue, app_stopped)",
+        "peekOfCode": "def home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:\n            return jsonify(error=\"bad request\")\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()",
         "detail": "server",
         "documentation": {}
     },
@@ -991,7 +991,7 @@
         "kind": 5,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "scheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\"))\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()",
+        "peekOfCode": "scheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:\n            return jsonify(error=\"bad request\")",
         "detail": "server",
         "documentation": {}
     }
