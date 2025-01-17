@@ -3,11 +3,11 @@ name: Release Executable
 on:
   push:
     tags:
-      - 'v*'  # Trigger on version tags like v1.0.0, v1.2.3, etc.
+      - 'v*'
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest  # Or windows-latest if needed
 
     steps:
     - name: Checkout Repository
@@ -17,7 +17,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          dist/webscraper.exe
+          dist/webscraper.exe  # Path to your executable
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}  # Use the secret token
 
     - name: Clean up
       run: |
