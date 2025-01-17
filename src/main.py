@@ -682,7 +682,6 @@ class ResultsPage(MDScreen):
         app.remove_result_dataframe()
         if self.interval:
             self.interval.cancel()
-            self.interval = None
 
     def on_enter(self, *args):
         self.interval = Clock.schedule_interval(self._tick_timer, 0.5)
@@ -694,7 +693,6 @@ class ResultsPage(MDScreen):
         app.remove_result_dataframe()
         if self.interval:
             self.interval.cancel()
-            self.interval = None
 
     def set_dataframe(self, dataframe: pd.DataFrame):
         app: WebScraperApp = MDApp.get_running_app()
