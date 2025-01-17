@@ -7,19 +7,19 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest  # Or windows-latest if needed
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
-
+    - name: Verify Executable Exists
+      run: ls -la dist/
     - name: Upload Executable to GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          dist/webscraper.exe  # Path to your executable
+        files: dist/webscraper.exe
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}  # Use the secret token
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     - name: Clean up
       run: |
