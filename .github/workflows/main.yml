@@ -7,17 +7,17 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest  # You can change this to `windows-latest` if you need a Windows runner
+    runs-on: windows-latest
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3  # Checkout the repository to access your code
+      uses: actions/checkout@v3
 
     - name: Upload Executable to GitHub Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          dist/webscraper.exe  # Path to your built executable
+          dist/webscraper.exe
 
     - name: Clean up
       run: |
