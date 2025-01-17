@@ -1,0 +1,998 @@
+[
+    {
+        "label": "runpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "runpy",
+        "description": "runpy",
+        "detail": "runpy",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "sysconfig",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sysconfig",
+        "description": "sysconfig",
+        "detail": "sysconfig",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "winreg",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "winreg",
+        "description": "winreg",
+        "detail": "winreg",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "APScheduler",
+        "importPath": "flask_apscheduler",
+        "description": "flask_apscheduler",
+        "isExtraImport": true,
+        "detail": "flask_apscheduler",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "TimeoutException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverException",
+        "importPath": "selenium.common.exceptions",
+        "description": "selenium.common.exceptions",
+        "isExtraImport": true,
+        "detail": "selenium.common.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "Keys",
+        "importPath": "selenium.webdriver.common.keys",
+        "description": "selenium.webdriver.common.keys",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.keys",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriver",
+        "importPath": "selenium.webdriver.remote.webdriver",
+        "description": "selenium.webdriver.remote.webdriver",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.remote.webdriver",
+        "documentation": {}
+    },
+    {
+        "label": "WebElement",
+        "importPath": "selenium.webdriver.remote.webelement",
+        "description": "selenium.webdriver.remote.webelement",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.remote.webelement",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "floor",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Clock",
+        "importPath": "kivy.clock",
+        "description": "kivy.clock",
+        "isExtraImport": true,
+        "detail": "kivy.clock",
+        "documentation": {}
+    },
+    {
+        "label": "AliasProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "BooleanProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "ListProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "NumericProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "StringProperty",
+        "importPath": "kivy.properties",
+        "description": "kivy.properties",
+        "isExtraImport": true,
+        "detail": "kivy.properties",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "importPath": "kivy.utils",
+        "description": "kivy.utils",
+        "isExtraImport": true,
+        "detail": "kivy.utils",
+        "documentation": {}
+    },
+    {
+        "label": "MDApp",
+        "importPath": "kivymd.app",
+        "description": "kivymd.app",
+        "isExtraImport": true,
+        "detail": "kivymd.app",
+        "documentation": {}
+    },
+    {
+        "label": "MDBoxLayout",
+        "importPath": "kivymd.uix.boxlayout",
+        "description": "kivymd.uix.boxlayout",
+        "isExtraImport": true,
+        "detail": "kivymd.uix.boxlayout",
+        "documentation": {}
+    },
+    {
+        "label": "MDScreen",
+        "importPath": "kivymd.uix.screen",
+        "description": "kivymd.uix.screen",
+        "isExtraImport": true,
+        "detail": "kivymd.uix.screen",
+        "documentation": {}
+    },
+    {
+        "label": "MDScreenManager",
+        "importPath": "kivymd.uix.screenmanager",
+        "description": "kivymd.uix.screenmanager",
+        "isExtraImport": true,
+        "detail": "kivymd.uix.screenmanager",
+        "documentation": {}
+    },
+    {
+        "label": "MDWidget",
+        "importPath": "kivymd.uix.widget",
+        "description": "kivymd.uix.widget",
+        "isExtraImport": true,
+        "detail": "kivymd.uix.widget",
+        "documentation": {}
+    },
+    {
+        "label": "save_web_scraped_to_csv",
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "isExtraImport": true,
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "web_scrape_from_google_using_selenium",
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "isExtraImport": true,
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "google_scrape",
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "isExtraImport": true,
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "schedule_app",
+        "importPath": "svr.service",
+        "description": "svr.service",
+        "isExtraImport": true,
+        "detail": "svr.service",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len('Scripts') - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = '' or os.path.basename(base)\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "base = bin_dir[: -len('Scripts') - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = '' or os.path.basename(base)\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if '' else path)",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = '' or os.path.basename(base)\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if '' else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = '' or os.path.basename(base)\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if '' else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = '' or os.path.basename(base)\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if '' else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in '..\\\\Lib\\\\site-packages'.split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if '' else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "Tee",
+        "kind": 6,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "class Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except OSError:\n                pass\n        tee_f.write(what)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "CopyTo",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def CopyTo(desc, src, dest):\n    import win32api\n    import win32con\n    while 1:\n        try:\n            win32api.CopyFile(src, dest, 0)\n            return\n        except win32api.error as details:\n            if details.winerror == 5:  # access denied - user not admin.\n                raise",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "LoadSystemModule",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def LoadSystemModule(lib_dir, modname):\n    # See if this is a debug build.\n    import importlib.machinery\n    import importlib.util\n    suffix = \"_d\" if \"_d.pyd\" in importlib.machinery.EXTENSION_SUFFIXES else \"\"\n    filename = \"%s%d%d%s.dll\" % (\n        modname,\n        sys.version_info.major,\n        sys.version_info.minor,\n        suffix,",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "SetPyKeyVal",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def SetPyKeyVal(key_name, value_name, value):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.CreateKey(root_key, key_name)\n        try:\n            winreg.SetValueEx(my_key, value_name, 0, winreg.REG_SZ, value)\n            if verbose:\n                print(f\"-> {root_key_name}\\\\{key_name}[{value_name}]={value!r}\")\n        finally:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "UnsetPyKeyVal",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def UnsetPyKeyVal(key_name, value_name, delete_key=False):\n    root_hkey = get_root_hkey()\n    root_key = winreg.OpenKey(root_hkey, root_key_name)\n    try:\n        my_key = winreg.OpenKey(root_key, key_name, 0, winreg.KEY_SET_VALUE)\n        try:\n            winreg.DeleteValue(my_key, value_name)\n            if verbose:\n                print(f\"-> DELETE {root_key_name}\\\\{key_name}[{value_name}]\")\n        finally:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterCOMObjects",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterCOMObjects(register=True):\n    import win32com.server.register\n    if register:\n        func = win32com.server.register.RegisterClasses\n    else:\n        func = win32com.server.register.UnregisterClasses\n    flags = {}\n    if not verbose:\n        flags[\"quiet\"] = 1\n    for module, klass_name in com_modules:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterHelpFile",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterHelpFile(register=True, lib_dir=None):\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    if register:\n        # Register the .chm help file.\n        chm_file = os.path.join(lib_dir, \"PyWin32.chm\")\n        if os.path.isfile(chm_file):\n            # This isn't recursive, so if 'Help' doesn't exist, we croak\n            SetPyKeyVal(\"Help\", None, None)\n            SetPyKeyVal(\"Help\\\\Pythonwin Reference\", None, chm_file)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "RegisterPythonwin",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def RegisterPythonwin(register=True, lib_dir=None):\n    \"\"\"Add (or remove) Pythonwin to context menu for python scripts.\n    ??? Should probably also add Edit command for pys files also.\n    Also need to remove these keys on uninstall, but there's no function\n        like file_created to add registry entries to uninstall log ???\n    \"\"\"\n    import os\n    if lib_dir is None:\n        lib_dir = sysconfig.get_paths()[\"platlib\"]\n    classes_root = get_root_hkey()",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_shortcuts_folder",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_shortcuts_folder():\n    if get_root_hkey() == winreg.HKEY_LOCAL_MACHINE:\n        try:\n            fldr = get_special_folder_path(\"CSIDL_COMMON_PROGRAMS\")\n        except OSError:\n            # No CSIDL_COMMON_PROGRAMS on this platform\n            fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")\n    else:\n        # non-admin install - always goes in this user's start menu.\n        fldr = get_special_folder_path(\"CSIDL_PROGRAMS\")",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_dir",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def get_system_dir():\n    import win32api  # we assume this exists.\n    try:\n        import pythoncom\n        import win32process\n        from win32com.shell import shell, shellcon\n        try:\n            if win32process.IsWow64Process():\n                return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEMX86)\n            return shell.SHGetSpecialFolderPath(0, shellcon.CSIDL_SYSTEM)",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "fixup_dbi",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def fixup_dbi():\n    # We used to have a dbi.pyd with our .pyd files, but now have a .py file.\n    # If the user didn't uninstall, they will find the .pyd which will cause\n    # problems - so handle that.\n    import win32api\n    import win32con\n    pyd_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi.pyd\")\n    pyd_d_name = os.path.join(os.path.dirname(win32api.__file__), \"dbi_d.pyd\")\n    py_name = os.path.join(os.path.dirname(win32con.__file__), \"dbi.py\")\n    for this_pyd in (pyd_name, pyd_d_name):",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "install",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def install(lib_dir):\n    import traceback\n    # The .pth file is now installed as a regular file.\n    # Create the .pth file in the site-packages dir, and use only relative paths\n    # We used to write a .pth directly to sys.prefix - clobber it.\n    if os.path.isfile(os.path.join(sys.prefix, \"pywin32.pth\")):\n        os.unlink(os.path.join(sys.prefix, \"pywin32.pth\"))\n    # The .pth may be new and therefore not loaded in this session.\n    # Setup the paths just in case.\n    for name in \"win32 win32\\\\lib Pythonwin\".split():",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "uninstall",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def uninstall(lib_dir):\n    # First ensure our system modules are loaded from pywin32_system, so\n    # we can remove the ones we copied...\n    LoadSystemModule(lib_dir, \"pywintypes\")\n    LoadSystemModule(lib_dir, \"pythoncom\")\n    try:\n        RegisterCOMObjects(False)\n    except Exception as why:\n        print(f\"Failed to unregister COM objects: {why}\")\n    try:",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verify_destination",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def verify_destination(location):\n    if not os.path.isdir(location):\n        raise argparse.ArgumentTypeError(f'Path \"{location}\" does not exist!')\n    return location\ndef main():\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:\n    > python pywin32_postinstall.py -install",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        description=\"\"\"A post-install script for the pywin32 extensions.\n    * Typical usage:\n    > python pywin32_postinstall.py -install\n    If you installed pywin32 via a .exe installer, this should be run\n    automatically after installation, but if it fails you can run it again.\n    If you installed pywin32 via PIP, you almost certainly need to run this to\n    setup the environment correctly.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "tee_f",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "tee_f = open(os.path.join(tempfile.gettempdir(), \"pywin32_postinstall.log\"), \"w\")\nclass Tee:\n    def __init__(self, file):\n        self.f = file\n    def write(self, what):\n        if self.f is not None:\n            try:\n                self.f.write(what.replace(\"\\n\", \"\\r\\n\"))\n            except OSError:\n                pass",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stderr",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stderr = Tee(sys.stderr)\nsys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "sys.stdout",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "sys.stdout = Tee(sys.stdout)\ncom_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "com_modules",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "com_modules = [\n    # module_name,                      class_names\n    (\"win32com.servers.interp\", \"Interpreter\"),\n    (\"win32com.servers.dictionary\", \"DictionaryPolicy\"),\n    (\"win32com.axscript.client.pyscript\", \"PyScript\"),\n]\n# Is this a 'silent' install - ie, avoid all dialogs.\n# Different than 'verbose'\nsilent = 0\n# Verbosity of output messages.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "silent",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "silent = 0\n# Verbosity of output messages.\nverbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to PythonXX\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "verbose",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "verbose = 1\nroot_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to PythonXX\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created  # type: ignore[used-before-def]\n    # 3.10 stopped supporting bdist_wininst, but we can still build them with 3.9.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "root_key_name",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_postinstall",
+        "description": ".venv.Scripts.pywin32_postinstall",
+        "peekOfCode": "root_key_name = \"Software\\\\Python\\\\PythonCore\\\\\" + sys.winver\ntry:\n    # When this script is run from inside the bdist_wininst installer,\n    # file_created() and directory_created() are additional builtin\n    # functions which write lines to PythonXX\\pywin32-install.log. This is\n    # a list of actions for the uninstaller, the format is inspired by what\n    # the Wise installer also creates.\n    file_created  # type: ignore[used-before-def]\n    # 3.10 stopped supporting bdist_wininst, but we can still build them with 3.9.\n    # This can be kept until Python 3.9 or exe installers support is dropped.",
+        "detail": ".venv.Scripts.pywin32_postinstall",
+        "documentation": {}
+    },
+    {
+        "label": "run_test",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()\n    result = subprocess.run(cmd, check=False, cwd=dirname)\n    print(f\"*** Test script '{script}' exited with {result.returncode}\")\n    sys.stdout.flush()\n    if result.returncode:",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "find_and_run",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def find_and_run(possible_locations, extras):\n    for maybe in possible_locations:\n        if os.path.isfile(maybe):\n            run_test(maybe, extras)\n            break\n    else:\n        raise RuntimeError(\n            \"Failed to locate a test script in one of %s\" % possible_locations\n        )\ndef main():",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "def main():\n    import argparse\n    code_directories = [this_dir] + site_packages\n    parser = argparse.ArgumentParser(\n        description=\"A script to trigger tests in all subprojects of PyWin32.\"\n    )\n    parser.add_argument(\n        \"-no-user-interaction\",\n        default=False,\n        action=\"store_true\",",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "this_dir",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "this_dir = os.path.dirname(__file__)\nsite_packages = [\n    site.getusersitepackages(),\n] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "site_packages",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "site_packages = [\n    site.getusersitepackages(),\n] + site.getsitepackages()\nfailures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "failures",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pywin32_testall",
+        "description": ".venv.Scripts.pywin32_testall",
+        "peekOfCode": "failures = []\n# Run a test using subprocess and wait for the result.\n# If we get an returncode != 0, we know that there was an error, but we don't\n# abort immediately - we run as many tests as we can.\ndef run_test(script, cmdline_extras):\n    dirname, scriptname = os.path.split(script)\n    # some tests prefer to be run from their directory.\n    cmd = [sys.executable, \"-u\", scriptname] + cmdline_extras\n    print(\"--- Running '%s' ---\" % script)\n    sys.stdout.flush()",
+        "detail": ".venv.Scripts.pywin32_testall",
+        "documentation": {}
+    },
+    {
+        "label": "scheduled_web_scraping",
+        "kind": 2,
+        "importPath": "svr.service",
+        "description": "svr.service",
+        "peekOfCode": "def scheduled_web_scraping():\n    print(\"Scheduled task executed\")\ndef schedule_app(app):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",",
+        "detail": "svr.service",
+        "documentation": {}
+    },
+    {
+        "label": "schedule_app",
+        "kind": 2,
+        "importPath": "svr.service",
+        "description": "svr.service",
+        "peekOfCode": "def schedule_app(app):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",\n        hour=8,\n    )",
+        "detail": "svr.service",
+        "documentation": {}
+    },
+    {
+        "label": "scrape_facebook_links",
+        "kind": 2,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "def scrape_facebook_links(\n    pages: List[WebElement],\n) -> Tuple[List[Dict[str, str]], List[str]]:\n    scraped_data = []\n    not_facebook_links = []\n    for result in pages:\n        try:\n            title = result.find_element(By.TAG_NAME, \"h3\").text\n            link = result.find_element(By.TAG_NAME, \"a\").get_attribute(\"href\")\n            if any([bool(fb_domain in link) for fb_domain in facebook_domains]):",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "scrape_facebook_links_via_a_tag",
+        "kind": 2,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "def scrape_facebook_links_via_a_tag(\n    driver: WebDriver, a_divg: list = []\n) -> Tuple[List[Dict[str, str]], List[str]]:\n    not_facebook_links = []\n    results = []\n    all_a = list(\n        {\n            result.get_attribute(\"href\")\n            for result in driver.find_elements(By.TAG_NAME, \"a\")\n            if result not in a_divg and result.get_attribute(\"href\") is not None",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "goto_link_and_scrape_facebook_links_via_a_tag",
+        "kind": 2,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "def goto_link_and_scrape_facebook_links_via_a_tag(\n    app_stopped: asyncio.Event, link: str\n):\n    options = webdriver.ChromeOptions()\n    options.add_argument(\"--disable-logging\")\n    options.add_argument(\"--headless\")  # Run in headless mode for performance\n    options.add_argument(\"--disable-gpu\")  # Disable GPU for headless mode\n    options.add_argument(\"--no-sandbox\")  # Necessary for some environments\n    options.add_argument(\"--log-level=3\")\n    options.add_argument(\"--disable-dev-shm-usage\")",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "web_scrape_from_google_using_selenium",
+        "kind": 2,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "def web_scrape_from_google_using_selenium(\n    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event\n) -> pd.DataFrame:\n    asyncio.run(google_scrape(search_text, output_queue, app_stopped))\ndef save_web_scraped_to_csv(dataframe: pd.DataFrame) -> str:\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    filename = f\"facebook_links_{timestamp}.csv\"\n    dataframe[[\"Title\", \"Link\"]].to_csv(f\"./exports/{filename}\")\n    return filename",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "save_web_scraped_to_csv",
+        "kind": 2,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "def save_web_scraped_to_csv(dataframe: pd.DataFrame) -> str:\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    filename = f\"facebook_links_{timestamp}.csv\"\n    dataframe[[\"Title\", \"Link\"]].to_csv(f\"./exports/{filename}\")\n    return filename",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "platform_name",
+        "kind": 5,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "platform_name = platform.system()\nfacebook_domains = [\n    \"facebook\",\n    # Primary Domains\n    \"facebook.com\",\n    \"facebook.net\",\n    \"fb.com\",\n    \"fbsbx.com\",\n    \"fbpigeon.com\",\n    \"facebook-hardware.com\",",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "facebook_domains",
+        "kind": 5,
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "peekOfCode": "facebook_domains = [\n    \"facebook\",\n    # Primary Domains\n    \"facebook.com\",\n    \"facebook.net\",\n    \"fb.com\",\n    \"fbsbx.com\",\n    \"fbpigeon.com\",\n    \"facebook-hardware.com\",\n    \"fb.gg\",",
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "TableRowCellContainer",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class TableRowCellContainer(MDBoxLayout):\n    parent_container = ObjectProperty(None)\nclass TableCell(MDWidget):\n    prev_parent = ObjectProperty(None)\n    def get_row(self):\n        if (\n            self.parent\n            and self.parent.parent_container\n            and isinstance(self.parent.parent_container, TableRow)\n        ):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "TableCell",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class TableCell(MDWidget):\n    prev_parent = ObjectProperty(None)\n    def get_row(self):\n        if (\n            self.parent\n            and self.parent.parent_container\n            and isinstance(self.parent.parent_container, TableRow)\n        ):\n            return self.parent.parent_container\n        return None",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "TableRow",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class TableRow(MDWidget):\n    def get_table(self):\n        if (\n            self.parent\n            and self.parent.parent_container\n            and isinstance(self.parent.parent_container, DisplayTable)\n        ):\n            return self.parent.parent_container\n        return None\n    table = AliasProperty(get_table, None, bind=[\"parent\"])",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "DisplayTable",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class DisplayTable(MDWidget):\n    column_data = ListProperty([])\n    row_data = ListProperty([])\n    disabled = BooleanProperty(False)\n    def get_content(self):\n        return self.ids.content_container if self.ids else None\n    content = AliasProperty(\n        get_content, None, bind=[\"column_data\", \"parent\", \"row_data\", \"disabled\"]\n    )\n    def get_row_contents(self):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "SearchBar",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class SearchBar(MDWidget):\n    search = StringProperty(\"\")\n    placeholder = StringProperty(\"Search to scrape\")\n    def _on_search_change(self, instance, value):\n        self.search = value\nclass SearchPage(MDScreen):\n    pass\nclass ResultsPage(MDScreen):\n    loading = BooleanProperty(True)\n    columns = ListProperty([])",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "SearchPage",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class SearchPage(MDScreen):\n    pass\nclass ResultsPage(MDScreen):\n    loading = BooleanProperty(True)\n    columns = ListProperty([])\n    rows = ListProperty([])\n    started = NumericProperty(0)\n    interval = ObjectProperty(None)\n    timer = StringProperty(\"0 sec\")\n    total_count = NumericProperty(0)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ResultsPage",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class ResultsPage(MDScreen):\n    loading = BooleanProperty(True)\n    columns = ListProperty([])\n    rows = ListProperty([])\n    started = NumericProperty(0)\n    interval = ObjectProperty(None)\n    timer = StringProperty(\"0 sec\")\n    total_count = NumericProperty(0)\n    def _tick_timer(self, dt):\n        self.started += dt",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "WebScraperApp",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class WebScraperApp(MDApp):\n    kv_directory = \"kv\"\n    message_passing = deque()\n    trigger_stop_async: asyncio.Event = None\n    result_dataframe: pd.DataFrame = None\n    def send_async_message(self, message):\n        self.message_passing.append(message)\n    def on_stop(self):\n        if self.trigger_stop_async:\n            self.trigger_stop_async.set()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "class Config:\n    SCHEDULER_API_ENABLED = True\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "def home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\"))\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()\n        await asyncio.gather(\n            await google_scrape(search_text, output_queue, app_stopped)",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "app = Flask(__name__)\nclass Config:\n    SCHEDULER_API_ENABLED = True\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "scheduler",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "scheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\"))\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()",
+        "detail": "server",
+        "documentation": {}
+    }
+]
