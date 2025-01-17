@@ -2,7 +2,7 @@
 from kivy_deps import sdl2, glew
 
 a = Analysis(
-    ['main.py'],
+    ['src\\main.py'],
     pathex=[],
     binaries=[],
     datas=[],
