@@ -1,0 +1,102 @@
+name: Build and Release PyInstaller Executable
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger on version tags, e.g., v1.0.0
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9' # Specify Python version
+
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+        pip install -r requirements.txt
+
+    # Build the executable
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller --onefile --noconsole main.py
+      shell: bash
+
+    # Upload artifact for release
+    - name: Upload artifact
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-${{ matrix.os }}
+        path: dist/*.exe  # Adjust based on OS: .exe for Windows, .app for macOS, no extension for Linux
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    # Download build artifacts
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: app-ubuntu-latest
+        path: artifacts/linux
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: app-windows-latest
+        path: artifacts/windows
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: app-macos-latest
+        path: artifacts/macos
+
+    # Create a release
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+
+    # Upload executables to release
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: artifacts/windows/*.exe
+        asset_name: app-windows.exe
+        asset_content_type: application/octet-stream
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: artifacts/macos/*.app
+        asset_name: app-macos.app
+        asset_content_type: application/octet-stream
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: artifacts/linux/app
+        asset_name: app-linux
+        asset_content_type: application/octet-stream
