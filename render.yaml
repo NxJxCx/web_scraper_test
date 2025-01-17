@@ -7,7 +7,6 @@ services:
     image:
       url: selenium/standalone-chrome:latest
     plan: free
-    port: 4444
     envVars:
       - key: SE_NODE_MAX_SESSIONS
         value: "5"
@@ -23,8 +22,11 @@ services:
     dockerfilePath: python.Dockerfile
     plan: free
     dependsOn:
-      - name: selenium-chrome
+      - service: selenium-chrome
         condition: service_healthy
     envVars:
       - key: SELENIUM_HOST
-        value: selenium-chrome  # Reference the Selenium service hostname
+        fromService:
+          name: selenium-chrome
+          type: web
+          property: hostport  # Dynamically reference Selenium service's host and port
