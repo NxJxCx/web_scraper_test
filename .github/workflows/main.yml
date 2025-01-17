@@ -43,10 +43,7 @@ jobs:
     # Build the executable
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --noconsole \
-          --add-data "kv:kv" \
-          --add-data "svr:svr" \
-          main.py
+        pyinstaller webscraper.spec
       shell: bash
 
     # Upload artifact for release

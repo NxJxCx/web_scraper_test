@@ -3,12 +3,20 @@ import traceback
 from collections import deque
 from math import floor
 from typing import Optional
-
+import os, sys
+from kivy.resources import resource_add_path, resource_find
 import numpy as np
 import pandas as pd
 from kivy.clock import Clock
-from kivy.properties import (AliasProperty, BooleanProperty, ListProperty,
-                             NumericProperty, ObjectProperty, StringProperty)
+from kivy.lang import Builder
+from kivy.properties import (
+    AliasProperty,
+    BooleanProperty,
+    ListProperty,
+    NumericProperty,
+    ObjectProperty,
+    StringProperty,
+)
 from kivy.utils import platform
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -16,8 +24,10 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.widget import MDWidget
 
-from svr.webscraper import (save_web_scraped_to_csv,
-                            web_scrape_from_google_using_selenium)
+from svr.webscraper import (
+    save_web_scraped_to_csv,
+    web_scrape_from_google_using_selenium,
+)
 
 if platform == "win":  # For Windows
     print("Running on Windows")
@@ -27,6 +37,129 @@ elif platform == "android":  # For Android
     print("Running on Android")
 else:
     print(f"Running on {platform}")
+
+kv = """
+#:kivy 2.3.1
+#:import dp kivy.metrics.dp
+
+ScreenManager:
+    SearchPage:
+        id: search_page
+    ResultsPage:
+        id: results_page
+
+<SearchPage>:
+    name: "search_page"
+    SearchBar:
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+<ResultsPage>:
+	name: "results_page"
+    md_bg_color: app.theme_cls.backgroundColor
+    MDLabel:
+        text: "Loading... {}".format(root.timer) if root.loading else "Total Facebook links: {}".format(root.total_count)
+        halign: 'center'
+        pos_hint: {"top": 1, "center_x": 0.5}
+        padding: dp(10)
+        size_hint_y: None
+        height: dp(30)
+        md_bg_color: app.theme_cls.primaryColor
+        color: 1,1,1
+    DisplayTable:
+        pos_hint: {"top": 0.94, "center_x": 0.5}
+        disabled: root.loading
+        column_data: root.columns if root.columns else []
+        row_data: root.rows if root.rows else []
+        height: dp(300)
+    MDButton:
+        style: "outlined"
+        on_release: root.manager.current = 'search_page'
+        pos_hint: {"y": 0.05, "x": 0.1}
+        MDButtonText:
+            text: 'Back to Menu'
+    MDButton:
+        style: "outlined"
+        on_release: app.save_to_csv()
+        disabled: root.loading
+        pos_hint: {"y": 0.05, "right": 0.9}
+        MDButtonText:
+            text: 'Save to CSV'
+
+<SearchBar>:
+	size_hint: None, None
+	size: dp(500), dp(50)
+	RelativeLayout:
+        size: root.size
+		pos: 0,0
+		FloatLayout:
+			size_hint: 1,1
+			MDTextField:
+				mode: "filled"
+				size_hint: 1,1
+				pos: root.pos
+				text: root.search
+				on_text: root._on_search_change(*args)
+				on_text_validate: app.search(root.search)
+				color: 0, 0, 0, 1
+				background_color: 1,1,1
+				multiline: False
+				MDTextFieldHintText:
+					text: root.placeholder
+
+<DisplayTable>:
+    size_hint: 1, None
+    height: dp(500)
+    MDScrollView:
+        pos: root.pos
+        size: root.size
+        do_scroll_x: False
+        MDBoxLayout:
+            orientation: 'vertical'
+            adaptive_height: True
+            padding: dp(4)
+            TableRowCellContainer:
+                id: content_container
+                size_hint: 1, None
+                height: dp(30 * (len(root.row_data) + 1))
+                parent_container: root
+                orientation: "vertical"
+                canvas.before:
+                    Color:
+                        rgb: 0, 0, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                    Color:
+                        rgb: 0,0,0,0
+
+<TableRow>:
+    TableRowCellContainer:
+        id: content_container
+        parent_container: root
+        orientation: "horizontal"
+        size: root.size
+        pos: root.pos
+
+<TableCell>
+    size_hint_y: None
+    height: dp(30)
+    padding: dp(2)
+    MDScrollView:
+        pos: root.pos
+        size: root.size
+        do_scroll_y: False
+        do_scroll_x: True
+        MDLabel:
+            id: content
+            multiline: False
+            color: 0,0,0,1
+            padding: dp(4)
+            adaptive_width: True
+            size_hint_y: 1
+
+
+<TableRowCellContainer>:
+"""
 
 
 class TableRowCellContainer(MDBoxLayout):
@@ -280,52 +413,8 @@ class ResultsPage(MDScreen):
         self.loading = False
 
 
-class WebScraperApp(MDApp):
-    kv_directory = "kv"
-    message_passing = deque()
-    trigger_stop_async: asyncio.Event = None
-    result_dataframe: pd.DataFrame = None
-
-    def send_async_message(self, message):
-        self.message_passing.append(message)
-
-    def on_stop(self):
-        if self.trigger_stop_async:
-            self.trigger_stop_async.set()
-
-    def after_search(self, result: Optional[pd.DataFrame], error=None):
-        if error:
-            print("ERROR:", error)
-            root: MDScreenManager = self.root
-            root.current = "search_page"
-        else:
-            resultsPage: ResultsPage = self.root.ids.results_page
-            resultsPage.set_dataframe(result)
-
-    def to_results_page(self):
-        root: MDScreenManager = self.root
-        resultsPage: ResultsPage = root.ids.results_page
-        root.current = resultsPage.name
-
-    def search(self, search_text):
-        self.send_async_message(
-            ("search", search_text, self.after_search, self.to_results_page)
-        )
-
-    def add_result_dataframe(self, dataframe: pd.DataFrame):
-        self.result_dataframe = dataframe
-
-    def remove_result_dataframe(self):
-        self.result_dataframe = None
-
-    def save_to_csv(self):
-        if self.result_dataframe is not None:
-            filename = save_web_scraped_to_csv(self.result_dataframe)
-            if platform == "android":
-                toast(f"Saved to {filename}", True, 80, 200, 0)
-
-
-async def async_loop(app_stopped: asyncio.Event, app: WebScraperApp):
+async def async_loop(app_stopped: asyncio.Event, app):
+    app: WebScraperApp = app
     while True:
         if app.message_passing and len(app.message_passing) > 0:
             message = app.message_passing.popleft()
@@ -359,6 +448,65 @@ async def async_loop(app_stopped: asyncio.Event, app: WebScraperApp):
     print("See ya!")
 
 
+class WebScraperApp(MDApp):
+    message_passing = deque()
+    trigger_stop_async: asyncio.Event = None
+    result_dataframe: pd.DataFrame = None
+
+    def build(self):
+        return Builder.load_string(kv)
+
+    async def loop_async_custom(self):
+        await async_loop(self.trigger_stop_async, self)
+
+    def send_async_message(self, message):
+        self.message_passing.append(message)
+
+    async def wait_all_trigger(self):
+        await self.trigger_stop_async.wait()
+
+    def on_stop(self):
+        if self.trigger_stop_async:
+            self.trigger_stop_async.set()
+        loop = asyncio.get_event_loop()
+        loop.create_task(self.wait_all_trigger())
+
+    def on_start(self):
+        loop = asyncio.get_event_loop()
+        loop.create_task(self.loop_async_custom())
+
+    def after_search(self, result: Optional[pd.DataFrame], error=None):
+        if error:
+            print("ERROR:", error)
+            root: MDScreenManager = self.root
+            root.current = "search_page"
+        else:
+            resultsPage: ResultsPage = self.root.ids.results_page
+            resultsPage.set_dataframe(result)
+
+    def to_results_page(self):
+        root: MDScreenManager = self.root
+        resultsPage: ResultsPage = root.ids.results_page
+        root.current = resultsPage.name
+
+    def search(self, search_text):
+        self.send_async_message(
+            ("search", search_text, self.after_search, self.to_results_page)
+        )
+
+    def add_result_dataframe(self, dataframe: pd.DataFrame):
+        self.result_dataframe = dataframe
+
+    def remove_result_dataframe(self):
+        self.result_dataframe = None
+
+    def save_to_csv(self):
+        if self.result_dataframe is not None:
+            filename = save_web_scraped_to_csv(self.result_dataframe)
+            if platform == "android":
+                toast(f"Saved to {filename}", True, 80, 200, 0)
+
+
 async def main():
     app = WebScraperApp()
     trigger_stop = asyncio.Event()
@@ -373,4 +521,16 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    if hasattr(sys, "_MEIPASS"):
+        resource_add_path(os.path.join(sys._MEIPASS))
+    try:
+        loop = asyncio.get_event_loop()
+        trs = trigger_stop_async = asyncio.Event()
+        myapp = WebScraperApp()
+        myapp.trigger_stop_async = trs
+        loop.run_until_complete(myapp.async_run(async_lib="asyncio"))
+    finally:
+        loop.close()
+
+# if __name__ == "__main__":
+#     asyncio.run(main())

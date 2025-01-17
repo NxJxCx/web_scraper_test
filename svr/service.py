@@ -18,7 +18,7 @@ def schedule_app(app, *callbacks):
     )
     for i, callback in enumerate(callbacks):
         scheduler.add_job(
-            id="Scheduled Task # {}".format(i+1),
+            id="Scheduled Task # {}".format(i + 1),
             func=callback,
         )
     return scheduler

@@ -30,6 +30,7 @@ app.config.from_object(Config)
 
 scheduler = schedule_app(app)
 
+
 @app.route("/")
 def home():
     return "Welcome to Webscraper app"
@@ -44,7 +45,15 @@ async def search():
             return jsonify(error="bad request")
         app_stopped: asyncio.Event = asyncio.Event()
         uid = secrets.token_hex(12)
-        asyncio.create_task(asyncio.to_thread(web_scrape_from_google_using_selenium, search_text, queue, app_stopped, uid))
+        asyncio.create_task(
+            asyncio.to_thread(
+                web_scrape_from_google_using_selenium,
+                search_text,
+                queue,
+                app_stopped,
+                uid,
+            )
+        )
 
         return jsonify(uid=uid)
 
@@ -52,6 +61,7 @@ async def search():
         traceback.print_exc()
         print("Error:", e)
         return jsonify(error=str(e))
+
 
 async def get_queues():
     global queue
@@ -62,6 +72,7 @@ async def get_queues():
             queues[uid] = asyncio.Queue()
         await queues[uid].put((msg, result))
     await asyncio.sleep(0.1)
+
 
 @app.route("/result")
 async def result():
@@ -85,6 +96,7 @@ async def result():
         traceback.print_exc()
         print("Error:", e)
         return jsonify(error=str(e))
+
 
 if __name__ == "__main__":
     scheduler.start()

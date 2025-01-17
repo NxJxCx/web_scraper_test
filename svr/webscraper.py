@@ -11,6 +11,7 @@ from typing import Dict, List, Tuple
 import pandas as pd
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
+
 # from selenium.webdriver.chrome.options import Options
 # from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -147,7 +148,10 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
 
 
 async def google_scrape(
-    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event, uid: str = ""
+    search_text: str,
+    output_queue: asyncio.Queue,
+    app_stopped: asyncio.Event,
+    uid: str = "",
 ):
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-logging")
@@ -183,8 +187,12 @@ async def google_scrape(
                 EC.presence_of_element_located((By.ID, "search"))
             )
         except TimeoutException as t:
-            res1, res2 = driver.find_element(By.TAG_NAME, "div").text.replace("\n", " ").split("URL: ")
-            scraped_results = [{"Title": res1, "Link": res2 }]
+            res1, res2 = (
+                driver.find_element(By.TAG_NAME, "div")
+                .text.replace("\n", " ")
+                .split("URL: ")
+            )
+            scraped_results = [{"Title": res1, "Link": res2}]
         except WebDriverException as w:
             pass
 
@@ -280,7 +288,10 @@ async def google_scrape(
 
 
 def web_scrape_from_google_using_selenium(
-    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event, uid: str = ""
+    search_text: str,
+    output_queue: asyncio.Queue,
+    app_stopped: asyncio.Event,
+    uid: str = "",
 ) -> pd.DataFrame:
     asyncio.run(google_scrape(search_text, output_queue, app_stopped, uid))
 
