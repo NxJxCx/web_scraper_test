@@ -7,14 +7,8 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 from kivy.clock import Clock
-from kivy.properties import (
-    AliasProperty,
-    BooleanProperty,
-    ListProperty,
-    NumericProperty,
-    ObjectProperty,
-    StringProperty,
-)
+from kivy.properties import (AliasProperty, BooleanProperty, ListProperty,
+                             NumericProperty, ObjectProperty, StringProperty)
 from kivy.utils import platform
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -22,10 +16,8 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.widget import MDWidget
 
-from svr.webscraper import (
-    save_web_scraped_to_csv,
-    web_scrape_from_google_using_selenium,
-)
+from svr.webscraper import (save_web_scraped_to_csv,
+                            web_scrape_from_google_using_selenium)
 
 if platform == "win":  # For Windows
     print("Running on Windows")
@@ -353,8 +345,10 @@ async def async_loop(app_stopped: asyncio.Event, app: WebScraperApp):
                     )
                     results = []
                     while not output_queue.empty():
-                        r = await output_queue.get()
-                        results = [*results, *r]
+                        uid, msg, r = await output_queue.get()
+                        print("QUEUE: ", (uid, msg, r))
+                        if msg == "done":
+                            results = [*results, *r]
                     callback(pd.DataFrame(results), None)
                 except Exception as e:
                     traceback.print_exc()

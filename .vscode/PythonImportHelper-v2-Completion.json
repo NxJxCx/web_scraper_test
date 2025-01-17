@@ -249,6 +249,14 @@
         "documentation": {}
     },
     {
+        "label": "DesiredCapabilities",
+        "importPath": "selenium.webdriver.common.desired_capabilities",
+        "description": "selenium.webdriver.common.desired_capabilities",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.desired_capabilities",
+        "documentation": {}
+    },
+    {
         "label": "Keys",
         "importPath": "selenium.webdriver.common.keys",
         "description": "selenium.webdriver.common.keys",
@@ -442,6 +450,31 @@
         "documentation": {}
     },
     {
+        "label": "web_scrape_from_google_using_selenium",
+        "importPath": "svr.webscraper",
+        "description": "svr.webscraper",
+        "isExtraImport": true,
+        "detail": "svr.webscraper",
+        "documentation": {}
+    },
+    {
+        "label": "secrets",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "secrets",
+        "description": "secrets",
+        "detail": "secrets",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -463,6 +496,14 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
         "documentation": {}
     },
     {
@@ -811,7 +852,7 @@
         "kind": 2,
         "importPath": "svr.service",
         "description": "svr.service",
-        "peekOfCode": "def scheduled_web_scraping():\n    print(\"Scheduled task executed\")\ndef schedule_app(app):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",",
+        "peekOfCode": "def scheduled_web_scraping():\n    print(\"Scheduled task executed\")\ndef schedule_app(app, *callbacks):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",",
         "detail": "svr.service",
         "documentation": {}
     },
@@ -820,7 +861,7 @@
         "kind": 2,
         "importPath": "svr.service",
         "description": "svr.service",
-        "peekOfCode": "def schedule_app(app):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",\n        hour=8,\n    )",
+        "peekOfCode": "def schedule_app(app, *callbacks):\n    scheduler = APScheduler()\n    scheduler.init_app(app)\n    scheduler.add_job(\n        id=\"Scheduled Task\",\n        func=scheduled_web_scraping,\n        trigger=\"cron\",\n        day_of_week=\"mon,wed,fri\",\n        hour=8,\n    )",
         "detail": "svr.service",
         "documentation": {}
     },
@@ -856,7 +897,7 @@
         "kind": 2,
         "importPath": "svr.webscraper",
         "description": "svr.webscraper",
-        "peekOfCode": "def web_scrape_from_google_using_selenium(\n    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event\n) -> pd.DataFrame:\n    asyncio.run(google_scrape(search_text, output_queue, app_stopped))\ndef save_web_scraped_to_csv(dataframe: pd.DataFrame) -> str:\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    filename = f\"facebook_links_{timestamp}.csv\"\n    dataframe[[\"Title\", \"Link\"]].to_csv(f\"./exports/{filename}\")\n    return filename",
+        "peekOfCode": "def web_scrape_from_google_using_selenium(\n    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event, uid: str = \"\"\n) -> pd.DataFrame:\n    asyncio.run(google_scrape(search_text, output_queue, app_stopped, uid))\ndef save_web_scraped_to_csv(dataframe: pd.DataFrame) -> str:\n    timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    filename = f\"facebook_links_{timestamp}.csv\"\n    dataframe[[\"Title\", \"Link\"]].to_csv(f\"./exports/{filename}\")\n    return filename",
         "detail": "svr.webscraper",
         "documentation": {}
     },
@@ -964,7 +1005,7 @@
         "kind": 6,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "class Config:\n    SCHEDULER_API_ENABLED = True\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:",
+        "peekOfCode": "class Config:\n    SCHEDULER_API_ENABLED = True\nqueue = asyncio.Queue()\nqueues = {}\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/search\")",
         "detail": "server",
         "documentation": {}
     },
@@ -973,7 +1014,7 @@
         "kind": 2,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "def home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:\n            return jsonify(error=\"bad request\")\n        output_queue: asyncio.Queue = asyncio.Queue()\n        app_stopped: asyncio.Event = asyncio.Event()",
+        "peekOfCode": "def home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/search\")\nasync def search():\n    global queue\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:\n            return jsonify(error=\"bad request\")\n        app_stopped: asyncio.Event = asyncio.Event()",
         "detail": "server",
         "documentation": {}
     },
@@ -982,7 +1023,34 @@
         "kind": 5,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "app = Flask(__name__)\nclass Config:\n    SCHEDULER_API_ENABLED = True\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = (\n    os.environ.get(\"SECRET_KEY\")\n    if \"SECRET_KEY\" in os.environ.keys()\n    else secrets.token_hex(12)\n)\nCORS(app)\nclass Config:\n    SCHEDULER_API_ENABLED = True\nqueue = asyncio.Queue()",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "app.secret_key",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "app.secret_key = (\n    os.environ.get(\"SECRET_KEY\")\n    if \"SECRET_KEY\" in os.environ.keys()\n    else secrets.token_hex(12)\n)\nCORS(app)\nclass Config:\n    SCHEDULER_API_ENABLED = True\nqueue = asyncio.Queue()\nqueues = {}",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "queue",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "queue = asyncio.Queue()\nqueues = {}\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/search\")\nasync def search():\n    global queue",
+        "detail": "server",
+        "documentation": {}
+    },
+    {
+        "label": "queues",
+        "kind": 5,
+        "importPath": "server",
+        "description": "server",
+        "peekOfCode": "queues = {}\napp.config.from_object(Config)\nscheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/search\")\nasync def search():\n    global queue\n    try:",
         "detail": "server",
         "documentation": {}
     },
@@ -991,7 +1059,7 @@
         "kind": 5,
         "importPath": "server",
         "description": "server",
-        "peekOfCode": "scheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/test\")\nasync def test():\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:\n            return jsonify(error=\"bad request\")",
+        "peekOfCode": "scheduler = schedule_app(app)\n@app.route(\"/\")\ndef home():\n    return \"Welcome to Webscraper app\"\n@app.route(\"/search\")\nasync def search():\n    global queue\n    try:\n        search_text: str = str(request.args.get(\"q\", \"\"))\n        if not search_text:",
         "detail": "server",
         "documentation": {}
     }

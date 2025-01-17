@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 import platform
 import time
 import traceback
@@ -10,10 +11,10 @@ from typing import Dict, List, Tuple
 import pandas as pd
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
-
 # from selenium.webdriver.chrome.options import Options
 # from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -103,12 +104,13 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
     options.add_argument("--disable-dev-shm-usage")
 
     driver = None
-    if platform_name == "Windows":
+    if platform_name == "Windows" or not (
+        "SELENIUM_HOST" in os.environ.keys()
+        and os.environ.get("SELENIUM_HOST") is not None
+    ):
         driver = webdriver.Chrome(options=options)
     else:
-        from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-        import os
-        selenium_grid_url = f"http://{os.environ.get("SELENIUM_HOST") if "SELENIUM_HOST" in os.environ.keys() else "localhost"}:4444/wd/hub"
+        selenium_grid_url = f"http://{os.environ.get('SELENIUM_HOST') if 'SELENIUM_HOST' in os.environ.keys() else 'localhost'}:4444/wd/hub"
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,
@@ -124,11 +126,13 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "body script"))
             )
-        except TimeoutException | WebDriverException:
+        except TimeoutException:
+            pass
+        except WebDriverException:
             pass
         if app_stopped.is_set():
             return []
-        time.sleep(1)
+        time.sleep(2)
         if app_stopped.is_set():
             return []
         result, _ = scrape_facebook_links_via_a_tag(driver)
@@ -143,7 +147,7 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
 
 
 async def google_scrape(
-    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event
+    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event, uid: str = ""
 ):
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-logging")
@@ -151,34 +155,39 @@ async def google_scrape(
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--log-level=3")
-    options.add_argument("--disable-dev-shm-usage")
-
     driver = None
-    if platform_name == "Windows":
+    if platform_name == "Windows" or not (
+        "SELENIUM_HOST" in os.environ.keys()
+        and os.environ.get("SELENIUM_HOST") is not None
+    ):
         driver = webdriver.Chrome(options=options)
     else:
-        from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-        import os
-        selenium_grid_url = f"http://{os.environ.get("SELENIUM_HOST") if "SELENIUM_HOST" in os.environ.keys() else "localhost"}:4444/wd/hub"
+        selenium_grid_url = f"http://{os.environ.get('SELENIUM_HOST') if 'SELENIUM_HOST' in os.environ.keys() else 'localhost'}:4444/wd/hub"
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,
         )
 
     try:
+        await output_queue.put((uid, "processing", None))
         scraped_results = []
         driver.get("https://www.google.com/")
         search_box = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.NAME, "q"))
         )
+        print("SEARCH BOX:", search_box)
         search_box.send_keys(search_text)
         search_box.send_keys(Keys.RETURN)
         try:
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.ID, "search"))
             )
-        except TimeoutException | WebDriverException:
+        except TimeoutException as t:
+            res1, res2 = driver.find_element(By.TAG_NAME, "div").text.replace("\n", " ").split("URL: ")
+            scraped_results = [{"Title": res1, "Link": res2 }]
+        except WebDriverException as w:
             pass
+
         results = driver.find_elements(By.CSS_SELECTOR, "div.g")
         scraped_data, not_facebook_links = scrape_facebook_links(results)
         fb_links, not_fb_links = scrape_facebook_links_via_a_tag(
@@ -208,7 +217,8 @@ async def google_scrape(
             nfb.extend(nf)
         if app_stopped.is_set():
             return []
-
+        print("All first data:")
+        print(len([*scraped_results, *nfb, *fb_links, *scraped_data]))
         scraped_results = [*scraped_results, *nfb, *fb_links, *scraped_data]
 
         # Handle pagination as before
@@ -223,8 +233,11 @@ async def google_scrape(
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.ID, "search"))
                 )
-            except TimeoutException | WebDriverException:
+            except TimeoutException:
                 pass
+            except WebDriverException:
+                pass
+            print("resulting ok", next_page)
             results = driver.find_elements(By.CSS_SELECTOR, "div.g")
             scraped_data, not_facebook_links = scrape_facebook_links(results)
             fb_links, not_fb_links = scrape_facebook_links_via_a_tag(
@@ -249,25 +262,27 @@ async def google_scrape(
             nfb = []
             for nf in not_fb:
                 nfb.extend(nf)
+            print("all next scrape data:")
+            print(len([*scraped_results, *nfb, *fb_links, *scraped_data]))
             scraped_results = [*scraped_results, *nfb, *fb_links, *scraped_data]
 
             next_page = driver.find_elements(By.CSS_SELECTOR, "a#pnnext")
             has_next = len(next_page) > 0
-
-        await output_queue.put(scraped_results)
+        print("scraped", len(scraped_results))
+        await output_queue.put((uid, "done", scraped_results))
     except Exception as e:
         traceback.print_exc()
         print("error on web scraping google", e)
-        await output_queue.put([])
+        await output_queue.put((uid, "error", str(e)))
     finally:
         print("first driver quitted")
         driver.quit()
 
 
 def web_scrape_from_google_using_selenium(
-    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event
+    search_text: str, output_queue: asyncio.Queue, app_stopped: asyncio.Event, uid: str = ""
 ) -> pd.DataFrame:
-    asyncio.run(google_scrape(search_text, output_queue, app_stopped))
+    asyncio.run(google_scrape(search_text, output_queue, app_stopped, uid))
 
 
 def save_web_scraped_to_csv(dataframe: pd.DataFrame) -> str:

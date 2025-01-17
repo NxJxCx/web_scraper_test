@@ -5,7 +5,7 @@ def scheduled_web_scraping():
     print("Scheduled task executed")
 
 
-def schedule_app(app):
+def schedule_app(app, *callbacks):
     scheduler = APScheduler()
     scheduler.init_app(app)
 
@@ -16,4 +16,9 @@ def schedule_app(app):
         day_of_week="mon,wed,fri",
         hour=8,
     )
+    for i, callback in enumerate(callbacks):
+        scheduler.add_job(
+            id="Scheduled Task # {}".format(i+1),
+            func=callback,
+        )
     return scheduler
