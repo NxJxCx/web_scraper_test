@@ -1,9 +1,9 @@
 requests
 selenium
-Flask
-Flask[async]
-Flask-Cors
 numpy
 pandas
-gunicorn
-Flask-APScheduler
+Quart
+quart-cors
+hypercorn
+flake8-black
+pyinstaller

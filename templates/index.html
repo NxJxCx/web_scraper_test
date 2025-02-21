@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Web Scraper App - Search{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">Web Scraper - Search</h1>
+    <p>This application allows you to search keywords and harvest facebook links</p>
+    <div class="card">
+        <div class="card-body">
+            <form id="search-form" method="post">
+                <h5 class="card-title">Search</h5>
+                <hr />
+                <input type="text" name="q" required />
+                <button type="submit">Search</button>
+            </form>
+            <hr />
+            <div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div><h5>Results:</h5></div>
+                    <div><button type="button" id="download-btn" disabled>Download as CSV file</button></div>
+                </div>
+                <table id="result-table" class="table table-responsive max-w-100 w-100">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">No Data</td colspan="2">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

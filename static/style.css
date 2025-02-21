@@ -1,0 +1,20 @@
+body {
+    background-color: #f8f9fa;
+}
+#header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
+#footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+#search-results {
+    position: relative;
+}

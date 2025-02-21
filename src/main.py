@@ -14,9 +14,14 @@ import numpy as np
 import pandas as pd
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import (AliasProperty, BooleanProperty, ListProperty,
-                             NumericProperty, ObjectProperty, StringProperty)
-from kivy.resources import resource_add_path, resource_find
+from kivy.properties import (
+    AliasProperty,
+    BooleanProperty,
+    ListProperty,
+    NumericProperty,
+    ObjectProperty,
+    StringProperty,
+)
 from kivy.utils import platform
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -25,6 +30,7 @@ from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.widget import MDWidget
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
+
 # from selenium.webdriver.chrome.options import Options
 # from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -141,7 +147,11 @@ def goto_link_and_scrape_facebook_links_via_a_tag(
     ):
         driver = webdriver.Chrome(options=options)
     else:
-        selenium_grid_url = f"http://{os.environ.get('SELENIUM_HOST') if 'SELENIUM_HOST' in os.environ.keys() else 'localhost'}:4444/wd/hub"
+        selenium_grid_url = "http://{}:4444/wd/hub".format(
+            os.environ.get("SELENIUM_HOST")
+            if "SELENIUM_HOST" in os.environ.keys()
+            else "localhost"
+        )
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,
@@ -196,7 +206,11 @@ async def google_scrape(
     ):
         driver = webdriver.Chrome(options=options)
     else:
-        selenium_grid_url = f"http://{os.environ.get('SELENIUM_HOST') if 'SELENIUM_HOST' in os.environ.keys() else 'localhost'}:4444/wd/hub"
+        selenium_grid_url = "http://{}:4444/wd/hub".format(
+            os.environ.get("SELENIUM_HOST")
+            if "SELENIUM_HOST" in os.environ.keys()
+            else "localhost"
+        )
         driver = webdriver.Remote(
             command_executor=selenium_grid_url,
             desired_capabilities=DesiredCapabilities.CHROME,
@@ -216,14 +230,14 @@ async def google_scrape(
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.ID, "search"))
             )
-        except TimeoutException as t:
+        except TimeoutException:
             res1, res2 = (
                 driver.find_element(By.TAG_NAME, "div")
                 .text.replace("\n", " ")
                 .split("URL: ")
             )
             scraped_results = [{"Title": res1, "Link": res2}]
-        except WebDriverException as w:
+        except WebDriverException:
             pass
 
         results = driver.find_elements(By.CSS_SELECTOR, "div.g")
@@ -348,10 +362,12 @@ ScreenManager:
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
 <ResultsPage>:
-	name: "results_page"
+    name: "results_page"
     md_bg_color: app.theme_cls.backgroundColor
     MDLabel:
-        text: "Loading... {}".format(root.timer) if root.loading else "Total Facebook links: {}".format(root.total_count)
+        text: "Loading... {}".format(
+            root.timer) if root.loading else "Total Facebook links: {}".format(
+                root.total_count)
         halign: 'center'
         pos_hint: {"top": 1, "center_x": 0.5}
         padding: dp(10)
@@ -380,25 +396,25 @@ ScreenManager:
             text: 'Save to CSV'
 
 <SearchBar>:
-	size_hint: None, None
-	size: dp(500), dp(50)
-	MDRelativeLayout:
+    size_hint: None, None
+    size: dp(500), dp(50)
+    MDRelativeLayout:
         size: root.size
-		pos: 0,0
-		MDFloatLayout:
-			size_hint: 1,1
-			MDTextField:
-				mode: "filled"
-				size_hint: 1,1
-				pos: root.pos
-				text: root.search
-				on_text: root._on_search_change(*args)
-				on_text_validate: app.search(root.search)
-				color: 0, 0, 0, 1
-				background_color: 1,1,1
-				multiline: False
-				MDTextFieldHintText:
-					text: root.placeholder
+        pos: 0,0
+        MDFloatLayout:
+            size_hint: 1,1
+            MDTextField:
+                mode: "filled"
+                size_hint: 1,1
+                pos: root.pos
+                text: root.search
+                on_text: root._on_search_change(*args)
+                on_text_validate: app.search(root.search)
+                color: 0, 0, 0, 1
+                background_color: 1,1,1
+                multiline: False
+                MDTextFieldHintText:
+                    text: root.placeholder
 
 <DisplayTable>:
     size_hint: 1, None
@@ -814,6 +830,8 @@ class WebScraperApp(MDApp):
 
 if __name__ == "__main__":
     if hasattr(sys, "_MEIPASS"):
+        from kivy.resources import resource_add_path  # noqa: F401
+
         resource_add_path(os.path.join(sys._MEIPASS))
     try:
         loop = asyncio.get_event_loop()

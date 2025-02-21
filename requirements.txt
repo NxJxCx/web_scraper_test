@@ -1,8 +1,8 @@
 kivy[base]
-numpy
 requests
 pandas
 numpy
 selenium
-black
+flake8-black
 https://github.com/kivymd/KivyMD/archive/master.zip
+pyinstaller

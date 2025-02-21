@@ -1,0 +1,19 @@
+[flake8]
+enable-extensions = G
+max-line-length = 88
+exclude = 
+    # Ignore these files and directories
+    .git,
+    .venv,
+    .senv,
+    .vscode,
+    dist,
+    exports,
+    Dockerfile,
+    .dockerignore,
+    .gitignore,
+    main.ipynb,
+    fopsco.ph.csv,
+    webscraper.spec,
+    __pycache__,
+    old_code.py
